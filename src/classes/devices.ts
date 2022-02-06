@@ -1,9 +1,11 @@
-//Interfaces
+//Interfaces and types
+type deviceType = "bulb" | "outlet" | "temperatureSensor";
+type connectionType = "connected" | "disconnected" | "poorConnection";
 interface SmartDeviceInterface {
-  type: string;
+  type: deviceType;
   id: string;
   name: string;
-  connectionState: string;
+  connectionState: connectionType;
   isTurnedOn?: boolean;
   brightness?: number;
   color?: string;
@@ -14,15 +16,32 @@ interface SmartDeviceInterface {
 //Classes
 
 class SmartDevice implements SmartDeviceInterface {
-  type: string;
+  type: deviceType;
   id: string;
   name: string;
-  connectionState: string;
-  constructor(type: string, id: string, name: string, connectionState: string) {
+  connectionState: connectionType;
+  isTurnedOn?: boolean;
+  brightness?: number;
+  color?: string;
+  powerConsuption?: number;
+  temperature?: number;
+
+  constructor(
+    type: deviceType,
+    id: string,
+    name: string,
+    connectionState: connectionType,
+    isTurnedOn?: boolean,
+    brightness?: number,
+    temperature?: number
+  ) {
     this.type = type;
     this.id = id;
     this.name = name;
     this.connectionState = connectionState;
+    this.isTurnedOn = isTurnedOn;
+    this.brightness = brightness;
+    this.temperature = temperature;
   }
 }
 
@@ -31,10 +50,10 @@ class SmartBulb extends SmartDevice {
   brightness: number;
   color: string;
   constructor(
-    type: string,
+    type: deviceType,
     id: string,
     name: string,
-    connectionState: string,
+    connectionState: connectionType,
     isTurnedOn: boolean,
     brightness: number,
     color: string
@@ -50,10 +69,10 @@ class SmartOutlet extends SmartDevice {
   isTurnedOn: boolean;
   powerConsuption: number;
   constructor(
-    type: string,
+    type: deviceType,
     id: string,
     name: string,
-    connectionState: string,
+    connectionState: connectionType,
     isTurnedOn: boolean,
     powerConsuption: number
   ) {
@@ -62,3 +81,5 @@ class SmartOutlet extends SmartDevice {
     this.powerConsuption = powerConsuption;
   }
 }
+
+const bulb1 = new SmartBulb("bulb", Math.ceil(Math.random()*1000000).toString(), "bulb1", "connected", false, 95, "white");
