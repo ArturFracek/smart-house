@@ -14,7 +14,7 @@ export default [
     color: "white",
   },
   {
-    id: "2",
+    id: uuid(),
     type: "bulb",
     name: "Bulb in toilet",
     connectionState: "disconnected",
@@ -24,6 +24,7 @@ export default [
   },
   {
     id: uuid(),
+    type: "bulb",
     name: "Bulb in attic",
     connectionState: "poorConnection",
     isTurnedOn: true,
@@ -33,6 +34,7 @@ export default [
   {
     //turned off
     id: uuid(),
+    type: "bulb",
     name: "Bulb in livingroom",
     connectionState: "connected",
     isTurnedOn: false,
@@ -42,6 +44,7 @@ export default [
   //Outlets
   {
     id: uuid(),
+    type: "outlet",
     name: "Outlet in kitchen",
     connectionState: "connected",
     isTurnedOn: true,
@@ -49,6 +52,7 @@ export default [
   },
   {
     id: uuid(),
+    type: "outlet",
     name: "Outlet in attic",
     connectionState: "connected",
     isTurnedOn: false,
@@ -65,19 +69,22 @@ export default [
   //temperature sensors
   {
     id: uuid(),
-    name: "Outlet in livingroom",
+    type: "temperatureSensor",
+    name: "Temperature sensor in livingroom",
     connectionState: "connected",
     temperature: 22
   },
   {
     id: uuid(),
-    name: "Outlet in attic",
+    type: "temperatureSensor",
+    name: "Temperature sensor in attic",
     connectionState: "connected",
     temperature: 25
   },
   {
     id: uuid(),
-    name: "Outlet in kitchen",
+    type: "temperatureSensor",
+    name: "Temperature sensor in kitchen",
     connectionState: "poorConnection",
     temperature: 150
   },

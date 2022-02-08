@@ -9,13 +9,15 @@ export function fetchAllDevices(): Promise<SmartDevice[]> {
   return Promise.resolve(mocks.map((device: any) => new SmartDevice(device)));
 }
 
-export function fetchDeviceById(id: string): Promise<SmartDeviceDetails | null> {
+export function fetchDeviceById(
+  id: string
+): Promise<SmartDeviceDetails | null> {
   const payload = mocks.find((device: any) => device.id === id);
   return Promise.resolve(_mapPayloadToDevice(payload));
 }
 
 function _mapPayloadToDevice(payload: any): SmartDeviceDetails | null {
-  if (!payload) return null
+  if (!payload) return null;
   switch (payload.type) {
     case "bulb":
       return new SmartBulb(payload);
