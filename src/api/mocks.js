@@ -1,5 +1,5 @@
-function uuid () {
-  return Math.random()
+function uuid() {
+  return Math.random() * 1000;
 }
 
 export default [
@@ -48,7 +48,7 @@ export default [
     name: "Outlet in kitchen",
     connectionState: "connected",
     isTurnedOn: true,
-    powerConsuption: 30
+    powerConsuption: 30,
   },
   {
     id: uuid(),
@@ -56,15 +56,15 @@ export default [
     name: "Outlet in attic",
     connectionState: "connected",
     isTurnedOn: false,
-    powerConsuption: 28
+    powerConsuption: 28,
   },
   {
-    id: "4",
+    id: uuid(),
     type: "outlet",
     name: "Outlet in livingroom",
     connectionState: "poorConnection",
     isTurnedOn: true,
-    powerConsuption: 25
+    powerConsuption: 25,
   },
   //temperature sensors
   {
@@ -72,20 +72,20 @@ export default [
     type: "temperatureSensor",
     name: "Temperature sensor in livingroom",
     connectionState: "connected",
-    temperature: 22
+    temperature: 22,
   },
   {
     id: uuid(),
     type: "temperatureSensor",
     name: "Temperature sensor in attic",
     connectionState: "connected",
-    temperature: 25
+    temperature: 25,
   },
   {
     id: uuid(),
     type: "temperatureSensor",
     name: "Temperature sensor in kitchen",
     connectionState: "poorConnection",
-    temperature: 150
+    temperature: 150,
   },
-]
+];

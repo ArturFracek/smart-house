@@ -1,7 +1,12 @@
 <template>
   <div class="mainView">
-    321
-    <Device />
+    <div class="mainView__devicesContainer">
+      <Device
+        v-for="(device, index) in devices"
+        :key="index"
+        :device="device"
+      />
+    </div>
   </div>
 </template>
 
@@ -29,5 +34,11 @@ export default {
 <style scoped>
 .mainView {
   height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.mainView__devicesContainer {
+width: 80vw;
 }
 </style>
