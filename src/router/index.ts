@@ -7,11 +7,10 @@ const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: "Main",
-    component: () =>
-      import(/* webpackChunkName: "Main" */ "../views/Main.vue"),
+    component: () => import(/* webpackChunkName: "Main" */ "../views/Main.vue"),
   },
   {
-    path: "devices/:deviceId",
+    path: "/devices/:deviceId",
     name: "deviceDetails",
     component: () =>
       import(/* webpackChunkName: "deviceDetails" */ "../views/Main.vue"),

@@ -1,5 +1,5 @@
 function uuid() {
-  return Math.random() * 1000;
+  return (Math.random() * 1000).toString();
 }
 
 export default [

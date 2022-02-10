@@ -1,6 +1,6 @@
 <template>
   <div class="deviceDetails">
-    
+    123
   </div>
 </template>
 
@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style>
-
+.deviceDetails {
+  height:100vh
+}
 </style>
