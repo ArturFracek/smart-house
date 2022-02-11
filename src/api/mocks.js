@@ -1,12 +1,10 @@
-function uuid() {
-  return (Math.random() * 1000).toString();
-}
+import { v4 as uuidv4 } from 'uuid';
 
 export default [
   //Bulbs
   {
     type: "bulb",
-    id: uuid(),
+    id: uuidv4(),
     name: "Bulb in kitchen",
     connectionState: "connected",
     isTurnedOn: true,
@@ -14,7 +12,7 @@ export default [
     color: "white",
   },
   {
-    id: uuid(),
+    id: uuidv4(),
     type: "bulb",
     name: "Bulb in toilet",
     connectionState: "disconnected",
@@ -23,7 +21,7 @@ export default [
     color: "red",
   },
   {
-    id: uuid(),
+    id: uuidv4(),
     type: "bulb",
     name: "Bulb in attic",
     connectionState: "poorConnection",
@@ -33,7 +31,7 @@ export default [
   },
   {
     //turned off
-    id: uuid(),
+    id: uuidv4(),
     type: "bulb",
     name: "Bulb in livingroom",
     connectionState: "connected",
@@ -43,7 +41,7 @@ export default [
   },
   //Outlets
   {
-    id: uuid(),
+    id: uuidv4(),
     type: "outlet",
     name: "Outlet in kitchen",
     connectionState: "connected",
@@ -51,7 +49,7 @@ export default [
     powerConsuption: 30,
   },
   {
-    id: uuid(),
+    id: uuidv4(),
     type: "outlet",
     name: "Outlet in attic",
     connectionState: "connected",
@@ -59,7 +57,7 @@ export default [
     powerConsuption: 28,
   },
   {
-    id: uuid(),
+    id: uuidv4(),
     type: "outlet",
     name: "Outlet in livingroom",
     connectionState: "poorConnection",
@@ -68,21 +66,21 @@ export default [
   },
   //temperature sensors
   {
-    id: uuid(),
+    id: uuidv4(),
     type: "temperatureSensor",
     name: "Temperature sensor in livingroom",
     connectionState: "connected",
     temperature: 22,
   },
   {
-    id: uuid(),
+    id: uuidv4(),
     type: "temperatureSensor",
     name: "Temperature sensor in attic",
     connectionState: "connected",
     temperature: 25,
   },
   {
-    id: uuid(),
+    id: uuidv4(),
     type: "temperatureSensor",
     name: "Temperature sensor in kitchen",
     connectionState: "poorConnection",

@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ path: `/devices/${+device.id}` }" class="device">
+  <router-link :to="{ path: `/devices/${device.id}` }" class="device">
     <div class="device__property">{{ capitalizeFirstLetter(device.type) }}</div>
     <div class="device__property">{{ device.name }}</div>
     <div class="device__property">{{ device.connectionState }}</div>
