@@ -1,31 +1,33 @@
 <template>
   <div class="mainView">
+    <Modal v-if="$route.params.deviceId">
+      {{ device }}
+    </Modal>
     <div class="mainView__devicesContainer">
       <Device
         v-for="(device, index) in devices"
         :key="index"
         :device="device"
       />
-      <DeviceDetails :widget="widget" v-if="$route.params.deviceId" />
     </div>
   </div>
 </template>
 
 <script>
 import Device from "@/components/Device.vue";
-import DeviceDetails from "@/components/DeviceDetails.vue";
+import Modal from "@/components/Modal.vue";
 import { fetchAllDevices, fetchDeviceById } from "@/api/index";
 
 export default {
   data() {
     return {
       devices: [],
-      widget: null,
+      device: null,
     };
   },
   components: {
     Device,
-    DeviceDetails,
+    Modal,
   },
   watch: {
     "$route.params.deviceId": {
@@ -35,15 +37,14 @@ export default {
       async handler(deviceId) {
         // handler to funcka która odpali się kiedy obserwowana wartosc sie zmieni ( wszystko z this., z $route, z vuexa) a lineId to Nowa wartosc po zmianie
         if (!deviceId) return;
-        this.widget = await fetchDeviceById(deviceId); // ciało funkcji
+        this.device = await fetchDeviceById(deviceId); // ciało funkcji
         console.log(deviceId);
-        console.log(this.widget);
+        console.log(this.device);
       },
     },
   },
-  async beforeMount() {
-    const res = await fetchAllDevices();
-    this.devices = res;
+  async mounted() {
+    this.devices = await fetchAllDevices();
   },
 };
 </script>
@@ -51,11 +52,14 @@ export default {
 <style scoped>
 .mainView {
   height: 100vh;
-  display: grid;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 .mainView__devicesContainer {
   width: 80vw;
+  display: grid;
+  align-items: center;
+  justify-content: center
 }
 </style>

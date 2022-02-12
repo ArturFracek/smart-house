@@ -1,10 +1,10 @@
-import { v4 as uuidv4 } from 'uuid';
-
+// import { v4 as uuidv4 } from 'uuid'; // Cant use it because it vary from id from the path to device after refresh
+// So I need to use constant id
 export default [
   //Bulbs
   {
     type: "bulb",
-    id: uuidv4(),
+    id: "1",
     name: "Bulb in kitchen",
     connectionState: "connected",
     isTurnedOn: true,
@@ -12,7 +12,7 @@ export default [
     color: "white",
   },
   {
-    id: uuidv4(),
+    id: "2",
     type: "bulb",
     name: "Bulb in toilet",
     connectionState: "disconnected",
@@ -21,7 +21,7 @@ export default [
     color: "red",
   },
   {
-    id: uuidv4(),
+    id: "3",
     type: "bulb",
     name: "Bulb in attic",
     connectionState: "poorConnection",
@@ -31,7 +31,7 @@ export default [
   },
   {
     //turned off
-    id: uuidv4(),
+    id: "4",
     type: "bulb",
     name: "Bulb in livingroom",
     connectionState: "connected",
@@ -41,7 +41,7 @@ export default [
   },
   //Outlets
   {
-    id: uuidv4(),
+    id: "5",
     type: "outlet",
     name: "Outlet in kitchen",
     connectionState: "connected",
@@ -49,7 +49,7 @@ export default [
     powerConsuption: 30,
   },
   {
-    id: uuidv4(),
+    id: "6",
     type: "outlet",
     name: "Outlet in attic",
     connectionState: "connected",
@@ -57,7 +57,7 @@ export default [
     powerConsuption: 28,
   },
   {
-    id: uuidv4(),
+    id: "7",
     type: "outlet",
     name: "Outlet in livingroom",
     connectionState: "poorConnection",
@@ -66,21 +66,21 @@ export default [
   },
   //temperature sensors
   {
-    id: uuidv4(),
+    id: "8",
     type: "temperatureSensor",
     name: "Temperature sensor in livingroom",
     connectionState: "connected",
     temperature: 22,
   },
   {
-    id: uuidv4(),
+    id: "9",
     type: "temperatureSensor",
     name: "Temperature sensor in attic",
     connectionState: "connected",
     temperature: 25,
   },
   {
-    id: uuidv4(),
+    id: "10",
     type: "temperatureSensor",
     name: "Temperature sensor in kitchen",
     connectionState: "poorConnection",

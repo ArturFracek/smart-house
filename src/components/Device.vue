@@ -1,6 +1,6 @@
 <template>
   <router-link :to="{ path: `/devices/${device.id}` }" class="device">
-    <div class="device__property">{{ capitalizeFirstLetter(device.type) }}</div>
+    <div class="device__property">{{ t[device.type] }}</div>
     <div class="device__property">{{ device.name }}</div>
     <div class="device__property">{{ device.connectionState }}</div>
   </router-link>
@@ -12,11 +12,6 @@ export default {
     device: {
       type: Object,
       required: false,
-    },
-  },
-  methods: {
-    capitalizeFirstLetter(string: string): string {
-      return string.charAt(0).toUpperCase() + string.slice(1);
     },
   },
 };
