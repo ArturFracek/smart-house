@@ -1,6 +1,6 @@
 <template>
   <div class="modal modal__draggable">
-    <router-link to="/" class="modal__close">X</router-link>
+   <button class="modal__close" @click="close" >x</button>
     <slot />
   </div>
 </template>
@@ -21,6 +21,9 @@ export default {
         "modal__draggable"
       )[0].style.transform = `translate(${position.x}px, ${position.y}px)`;
     },
+    close() {
+      this.$emit("close")
+    }
   },
   mounted() {
     this.updatePosition(Store.modalPosition);
@@ -36,12 +39,12 @@ export default {
 <style>
 .modal {
   position: absolute;
-  width: 40vw;
+  width: 45vw;
   height: 20vh;
   background-color: rgb(64, 66, 68);
   color: white;
   border-radius: 12px;
-  box-shadow: 6px 10px 10px black;
+  box-shadow:  15px 15px 46px -15px rgba(0,0,0,0.28);
   padding: 4%;
   touch-action: none;
   user-select: none;
@@ -52,6 +55,14 @@ export default {
   right: 10px;
   color: white;
   text-decoration: none;
+  background: transparent;
+  border: none;
+  font-size: 25px;
+  transition: 0.2s;
+}
+.modal__close:hover {
+  color: red;
+  font-size: 30px;
 }
 
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
@@ -68,7 +79,7 @@ export default {
     outline: none;
     border-radius: 4px;
     background: rgba(65, 63, 63, 0.856);
-    box-shadow: 5px 8px 15px black;
+    box-shadow: 5px 8px 30px rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(53, 55, 56));
     padding: 0;
   }

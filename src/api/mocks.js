@@ -5,7 +5,7 @@ export default [
   {
     type: "bulb",
     id: "1",
-    name: "Bulb in kitchen",
+    name: "Xiaomi - Toilet",
     connectionState: "connected",
     isTurnedOn: true,
     brightness: 60,
@@ -14,7 +14,7 @@ export default [
   {
     id: "2",
     type: "bulb",
-    name: "Bulb in toilet",
+    name: "Nous P3 - Living room",
     connectionState: "disconnected",
     isTurnedOn: true,
     brightness: 80,
@@ -23,7 +23,7 @@ export default [
   {
     id: "3",
     type: "bulb",
-    name: "Bulb in attic",
+    name: "Philips Retro - Kitchen",
     connectionState: "poorConnection",
     isTurnedOn: true,
     brightness: 96,
@@ -33,7 +33,7 @@ export default [
     //turned off
     id: "4",
     type: "bulb",
-    name: "Bulb in livingroom",
+    name: "Yeelight - Garage",
     connectionState: "connected",
     isTurnedOn: false,
     brightness: 96,
@@ -43,7 +43,7 @@ export default [
   {
     id: "5",
     type: "outlet",
-    name: "Outlet in kitchen",
+    name: "Xiaomi plug - Attic",
     connectionState: "connected",
     isTurnedOn: true,
     powerConsuption: 30,
@@ -51,7 +51,7 @@ export default [
   {
     id: "6",
     type: "outlet",
-    name: "Outlet in attic",
+    name: "Fibaro Walli - Corridor",
     connectionState: "connected",
     isTurnedOn: false,
     powerConsuption: 28,
@@ -59,7 +59,7 @@ export default [
   {
     id: "7",
     type: "outlet",
-    name: "Outlet in livingroom",
+    name: "Philips Hue - Kitchen",
     connectionState: "poorConnection",
     isTurnedOn: true,
     powerConsuption: 25,
@@ -68,21 +68,21 @@ export default [
   {
     id: "8",
     type: "temperatureSensor",
-    name: "Temperature sensor in livingroom",
+    name: "Xiaomi - Living room",
     connectionState: "connected",
     temperature: 22,
   },
   {
     id: "9",
     type: "temperatureSensor",
-    name: "Temperature sensor in attic",
+    name: "Aqara - Attic",
     connectionState: "connected",
     temperature: 25,
   },
   {
     id: "10",
     type: "temperatureSensor",
-    name: "Temperature sensor in kitchen",
+    name: "Xiaomi - Kitchen",
     connectionState: "poorConnection",
     temperature: 150,
   },

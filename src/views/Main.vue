@@ -1,7 +1,7 @@
 <template>
   <div class="mainView">
-    <Modal v-if="$route.params.deviceId">
-      {{ device }}
+    <Modal v-if="$route.params.deviceId" @close="$router.push({ path: '/' })">
+      <DeviceDetails :device="device"/>
     </Modal>
     <div class="mainView__devicesContainer">
       <Device
@@ -16,6 +16,7 @@
 <script>
 import Device from "@/components/Device.vue";
 import Modal from "@/components/Modal.vue";
+import DeviceDetails from "@/components/DeviceDetails.vue";
 import { fetchAllDevices, fetchDeviceById } from "@/api/index";
 
 export default {
@@ -28,6 +29,7 @@ export default {
   components: {
     Device,
     Modal,
+    DeviceDetails,
   },
   watch: {
     "$route.params.deviceId": {
@@ -60,6 +62,6 @@ export default {
   width: 80vw;
   display: grid;
   align-items: center;
-  justify-content: center
+  justify-content: center;
 }
 </style>
