@@ -22,9 +22,13 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: sandybrown;
-  margin: 2%;
+  margin: 1%;
+  align-items: center;
+  width: 70vw;
+  height: 5vh;
 }
 .device__property {
   background-color: salmon;
+  white-space: nowrap;
 }
 </style>

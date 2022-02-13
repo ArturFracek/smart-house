@@ -1,10 +1,29 @@
 <template>
   <div class="deviceDetails">
     <div class="deviceDetails__Title">
-      <div class="device__data device__data--type">{{ t[device.type] }}</div>
-      <i v-if="t[device.type] == 'Bulb'" class="fa-solid fa-lightbulb"></i>
-      <i class="fa-duotone fa-temperature-quarter"></i>
-      <font-awesome-icon icon="fa-thin fa-sensor-on" />
+      <div class="device__data device__data--type">
+         <i v-if="t[device.type] == 'Bulb'" class="fa-solid fa-lightbulb"></i>
+        <i
+          v-if="t[device.type] == 'Outlet'"
+          class="fa-solid fa-bolt-lightning"
+        ></i>
+        <i
+          v-if="t[device.type] == 'Temperature Sensor'"
+          class="fa-solid fa-temperature-half"
+        ></i>
+        <!--  -->
+        {{ t[device.type] }}
+        <!--  -->
+        <i v-if="t[device.type] == 'Bulb'" class="fa-solid fa-lightbulb"></i>
+        <i
+          v-if="t[device.type] == 'Outlet'"
+          class="fa-solid fa-bolt-lightning"
+        ></i>
+        <i
+          v-if="t[device.type] == 'Temperature Sensor'"
+          class="fa-solid fa-temperature-half"
+        ></i>
+      </div>
     </div>
     <div class="deviceDetails__informations">
       <div class="device__data device__data--name">{{ device.name }}</div>
@@ -40,11 +59,21 @@ export default {
 </script>
 
 <style>
+.device__data--type {
+  justify-self: start;
+}
 .fa-lightbulb {
   color: yellow;
 }
-.fa-temperature-quarter{
+.fa-bolt-lightning {
   color: red;
-  font-size: 15px;
+}
+.fa-temperature-half {
+  color: blue;
+}
+
+.deviceDetails__informations{
+  display: flex;
+  margin-top: auto;
 }
 </style>

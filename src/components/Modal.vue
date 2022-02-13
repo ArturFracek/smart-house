@@ -69,7 +69,6 @@ export default {
   .modal {
     display: flex;
     flex-flow: column;
-    justify-content: center;
     align-items: center;
     transform: translate(-50%, -50%);
     text-align: center;
