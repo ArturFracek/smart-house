@@ -12,6 +12,9 @@ body {
   height: 100vh;
   margin: 0;
 }
+body {
+  background-color: #eee
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

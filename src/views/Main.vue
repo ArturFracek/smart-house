@@ -1,45 +1,33 @@
 <template>
   <div class="mainView">
+    <Navigation />
     <Modal v-if="$route.params.deviceId" @close="$router.push({ path: '/' })">
       <DeviceDetails :device="device" />
     </Modal>
-    <button class="mainView__smartHouse" @click="$router.push({ path: '/' })">
-      <i class="fa-solid fa-house-laptop"></i>
-    </button>
     <div class="mainView__devicesContainer">
       <div class="mainView__deviceType mainView__deviceType--bulbs">
-        <div class="mainView__header">
-          <div class="mainView__header--typeHeader">Bulbs</div>
-          <i class="fa-solid fa-lightbulb"></i>
+        <div class="tile__header">
+          <div class="tile__header--typeHeader">Bulbs</div>
+          <i class="header-icon fa-solid fa-lightbulb"></i>
         </div>
-        <Device
-          v-for="(device, index) in $options.filters.bulbs(devices)"
-          :key="'Bulb' + index"
-          :device="device"
-        />
+        <DevicesTile :filteredDevices="$options.filters.bulbs(devices)" />
       </div>
       <div class="mainView__deviceType mainView__deviceType--outlets">
-        <div class="mainView__header">
-        <div class="mainView__header--typeHeader">Outlets</div> <i class="fa-solid fa-bolt-lightning"></i>
+        <div class="tile__header">
+          <div class="tile__header--typeHeader">Outlets</div>
+          <i class="header-icon fa-solid fa-bolt-lightning"></i>
         </div>
-        <Device
-          v-for="(device, index) in $options.filters.outlets(devices)"
-          :key="'Outlet' + index"
-          :device="device"
-        />
+        <DevicesTile :filteredDevices="$options.filters.outlets(devices)" />
       </div>
       <div
         class="mainView__deviceType mainView__deviceType--temperatureSensors"
       >
-      <div class="mainView__header">
-        <div class="mainView__header--typeHeader">Temperature Sensors</div> <i class="fa-solid fa-temperature-half"></i>
+        <div class="tile__header">
+          <div class="tile__header--typeHeader">Temperature Sensors</div>
+          <i class="header-icon fa-solid fa-temperature-half"></i>
         </div>
-        <Device
-          v-for="(device, index) in $options.filters.temperatureSensors(
-            devices
-          )"
-          :key="'temperatureSensor' + index"
-          :device="device"
+        <DevicesTile
+          :filteredDevices="$options.filters.temperatureSensors(devices)"
         />
       </div>
     </div>
@@ -47,7 +35,8 @@
 </template>
 
 <script>
-import Device from "@/components/Device.vue";
+import Navigation from "@/components/Navigation"
+import DevicesTile from "@/components/DevicesTile";
 import Modal from "@/components/Modal.vue";
 import DeviceDetails from "@/components/DeviceDetails.vue";
 import { fetchAllDevices, fetchDeviceById } from "@/api/index";
@@ -62,9 +51,10 @@ export default {
     };
   },
   components: {
-    Device,
     Modal,
     DeviceDetails,
+    DevicesTile,
+    Navigation
   },
   watch: {
     "$route.params.deviceId": {
@@ -103,14 +93,14 @@ export default {
     window.clearInterval(this.fetchDeviceInterval);
   },
   filters: {
-    bulbs: function (devices) {
-      return devices.filter((d) => d.type == "bulb");
+    bulbs(devices) {
+      return devices.filter((d) => d.type === "bulb");
     },
-    outlets: function (devices) {
-      return devices.filter((d) => d.type == "outlet");
+    outlets(devices) {
+      return devices.filter((d) => d.type === "outlet");
     },
-    temperatureSensors: function (devices) {
-      return devices.filter((d) => d.type == "temperatureSensor");
+    temperatureSensors(devices) {
+      return devices.filter((d) => d.type === "temperatureSensor");
     },
   },
 };
@@ -131,34 +121,20 @@ export default {
   align-items: start;
   justify-content: center;
 }
-.mainView__smartHouse {
-  width: 15vw;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  border-bottom: 2px double black;
-  background-color: transparent;
-  border-radius: 6px;
-}
-.fa-house-laptop {
-  font-size: 6vh;
-  animation: onTrigger 0.5s;
-  margin-bottom: 1vh;
-}
-.fa-house-laptop:hover,
-.mainView__smartHouse:hover {
-  color: rgb(206, 3, 3);
-  border-color: rgb(206, 3, 3);
-  cursor: pointer;
-}
-.mainView__header {
+.tile__header {
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  padding: 0vh 2.5vh;
+  position: relative;
 }
-.mainView__header--typeHeader {
+.tile__header--typeHeader {
   font-size: 24px;
   font-weight: 800;
   padding-right: 6px;
+}
+.header-icon {
+ position: absolute;
+ right: 3vw;
 }
 
 @keyframes onTrigger {

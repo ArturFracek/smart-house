@@ -27,25 +27,31 @@ export default {
 <style scoped>
 .device {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: rgb(245, 245, 245);
-  box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.342);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   margin: 1vh 2.5vh 2.5vh;
   align-items: center;
   width: 25vw;
   height: 5vh;
-  padding: 3%;
+  padding: 8px 16px;
+  border-radius: 8px;
   min-width: fit-content;
-  background: none;
-  backdrop-filter: blur(10px)
-    drop-shadow(0px 0px 5px rgba(165, 164, 164, 0.993));
+  background: white;
   text-decoration: none;
+  position: relative;
+  transition: all 250ms ease;
+  font-size: 16px;
+  font-weight: 500;
+}
+.device:hover {
+  transform: scale(1.05)
 }
 .device__property {
   color: black;
 }
 .device__property--name {
-  justify-self: center;
+  justify-self: start;
 }
 .device__property--connectionStateDot {
   position: absolute;
