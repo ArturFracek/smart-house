@@ -1,5 +1,5 @@
 <template>
-  <div class="deviceDetails">
+  <div class="deviceDetails" v-if="device">
     <div class="deviceDetails__Title">
       <div class="device__data device__data--type">
          <i v-if="t[device.type] == 'Bulb'" class="fa-solid fa-lightbulb"></i>
@@ -62,17 +62,13 @@ export default {
 .device__data--type {
   justify-self: start;
 }
-.fa-lightbulb {
-  color: yellow;
-}
-.fa-bolt-lightning {
-  color: red;
-}
-.fa-temperature-half {
-  color: blue;
+.fa-lightbulb, .fa-bolt-lightning, .fa-temperature-half {
+  color: rgba(17, 20, 14, 0.123);
+  font-size: 28px;
 }
 
-.deviceDetails__informations{
+
+.deviceDetails__informations {
   display: flex;
   margin-top: auto;
 }

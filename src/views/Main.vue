@@ -3,15 +3,45 @@
     <Modal v-if="$route.params.deviceId" @close="$router.push({ path: '/' })">
       <DeviceDetails :device="device" />
     </Modal>
+    <button class="mainView__smartHouse" @click="$router.push({ path: '/' })">
+      <i class="fa-solid fa-house-laptop"></i>
+    </button>
     <div class="mainView__devicesContainer">
-      <div class="smartHouse" @click="$router.push({ path: '/' })">
-        <i class="fa-solid fa-house-laptop"></i>
+      <div class="mainView__deviceType mainView__deviceType--bulbs">
+        <div class="mainView__header">
+          <div class="mainView__header--typeHeader">Bulbs</div>
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
+        <Device
+          v-for="(device, index) in $options.filters.bulbs(devices)"
+          :key="'Bulb' + index"
+          :device="device"
+        />
       </div>
-      <Device
-        v-for="(device, index) in devices"
-        :key="index"
-        :device="device"
-      />
+      <div class="mainView__deviceType mainView__deviceType--outlets">
+        <div class="mainView__header">
+        <div class="mainView__header--typeHeader">Outlets</div> <i class="fa-solid fa-bolt-lightning"></i>
+        </div>
+        <Device
+          v-for="(device, index) in $options.filters.outlets(devices)"
+          :key="'Outlet' + index"
+          :device="device"
+        />
+      </div>
+      <div
+        class="mainView__deviceType mainView__deviceType--temperatureSensors"
+      >
+      <div class="mainView__header">
+        <div class="mainView__header--typeHeader">Temperature Sensors</div> <i class="fa-solid fa-temperature-half"></i>
+        </div>
+        <Device
+          v-for="(device, index) in $options.filters.temperatureSensors(
+            devices
+          )"
+          :key="'temperatureSensor' + index"
+          :device="device"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -45,8 +75,9 @@ export default {
         // handler to funcka która odpali się kiedy obserwowana wartosc sie zmieni ( wszystko z this., z $route, z vuexa) a lineId to Nowa wartosc po zmianie
 
         if (!deviceId) return;
+        await this.loadDeviceById(deviceId);
         this.fetchDeviceInterval = setInterval(
-          (this.device = await fetchDeviceById(deviceId)),
+          () => this.loadDeviceById(deviceId),
           3000
         ); // ciało funkcji
 
@@ -55,15 +86,32 @@ export default {
       },
     },
   },
+  methods: {
+    async loadAllDevices() {
+      this.devices = await fetchAllDevices();
+    },
+    async loadDeviceById(id) {
+      this.device = await fetchDeviceById(id);
+    },
+  },
   async mounted() {
-    this.fetchDevicesInterval = setInterval(
-      (this.devices = await fetchAllDevices()),
-      3000
-    );
+    await this.loadAllDevices();
+    this.fetchDevicesInterval = setInterval(this.loadAllDevices, 3000);
   },
   beforeDestroy() {
     window.clearInterval(this.fetchDevicesInterval);
     window.clearInterval(this.fetchDeviceInterval);
+  },
+  filters: {
+    bulbs: function (devices) {
+      return devices.filter((d) => d.type == "bulb");
+    },
+    outlets: function (devices) {
+      return devices.filter((d) => d.type == "outlet");
+    },
+    temperatureSensors: function (devices) {
+      return devices.filter((d) => d.type == "temperatureSensor");
+    },
   },
 };
 </script>
@@ -72,21 +120,45 @@ export default {
 .mainView {
   height: 100vh;
   display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
 }
 .mainView__devicesContainer {
+  margin-top: 4vh;
   width: 80vw;
-  display: grid;
-  align-items: center;
+  display: flex;
+  align-items: start;
   justify-content: center;
 }
-.fa-house-laptop{
+.mainView__smartHouse {
+  width: 15vw;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px double black;
+  background-color: transparent;
+  border-radius: 6px;
+}
+.fa-house-laptop {
   font-size: 6vh;
   animation: onTrigger 0.5s;
+  margin-bottom: 1vh;
 }
-.fa-house-laptop:hover{
+.fa-house-laptop:hover,
+.mainView__smartHouse:hover {
   color: rgb(206, 3, 3);
+  border-color: rgb(206, 3, 3);
+  cursor: pointer;
+}
+.mainView__header {
+  display: flex;
+  justify-content: center;
+}
+.mainView__header--typeHeader {
+  font-size: 24px;
+  font-weight: 800;
+  padding-right: 6px;
 }
 
 @keyframes onTrigger {
@@ -98,7 +170,7 @@ export default {
     filter: hue-rotate(0deg);
   }
   20% {
-    opacity: 0.;
+    opacity: 0;
     filter: hue-rotate(0deg);
   }
   70% {
@@ -119,5 +191,4 @@ export default {
     filter: hue-rotate(0deg);
   }
 }
-
 </style>
