@@ -1,15 +1,17 @@
 <template>
   <div class="nav">
-    <button class="mainView__smartHouse" @click="$router.push({ path: '/' })">
+    <button
+      v-if="$route.params"
+      class="mainView__smartHouse"
+      @click="$router.push({ path: '/' })"
+    >
       <i class="fa-solid fa-house-laptop"></i>
     </button>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
@@ -37,11 +39,11 @@ export default {
   animation: onTrigger 0.5s;
   margin-bottom: 1vh;
   text-shadow: 0 9px 4px rgba(89, 92, 88, 0.637);
+  transition: all 250ms ease;
 }
 .fa-house-laptop:hover,
 .mainView__smartHouse:hover {
-  color: rgb(206, 3, 3);
-  border-color: rgb(206, 3, 3);
+  transform: scale(1.05);
   cursor: pointer;
 }
 </style>
