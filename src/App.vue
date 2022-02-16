@@ -8,6 +8,11 @@
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Permanent+Marker&family=Ubuntu+Mono&display=swap');
+* {
+  font-family: 'Ubuntu Mono', monospace;
+}
 body {
   height: 100vh;
   margin: 0;

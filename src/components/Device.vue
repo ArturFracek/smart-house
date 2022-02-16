@@ -5,9 +5,9 @@ import { fetchAllDevices } from '@/api';
     <div
       class="device__property device__property--connectionStateDot"
       :class="{
-        connected: device.connectionState == 'connected',
-        poorConnection: device.connectionState == 'poorConnection',
-        disconnected: device.connectionState == 'disconnected',
+        connected: device.connectionState === 'connected',
+        poorConnection: device.connectionState === 'poor connection',
+        disconnected: device.connectionState === 'disconnected',
       }"
     ></div>
   </router-link>
@@ -24,7 +24,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .device {
   display: flex;
   justify-content: space-between;

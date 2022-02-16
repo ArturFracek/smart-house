@@ -34,11 +34,11 @@ export default {};
   border-radius: 6px;
 }
 .fa-house-laptop {
-  color: rgb(117, 112, 112);
+  color: rgb(5, 4, 4);
   font-size: 6vh;
   animation: onTrigger 0.5s;
   margin-bottom: 1vh;
-  text-shadow: 0 9px 4px rgba(89, 92, 88, 0.637);
+  text-shadow: 0 9px 4px rgba(182, 181, 181, 0.637);
   transition: all 250ms ease;
 }
 .fa-house-laptop:hover,
