@@ -34,10 +34,10 @@
           ></div>
         </div>
       </div>
-      <div v-if="device.isTurnedOn" class="dataTile">
+      <div v-if="typeof device.isTurnedOn === 'boolean'" class="dataTile">
         <div class="device__dataType">State</div>
         <div class="device__data device__data--isTurnedOn">
-          {{ device.isTurnedOn ? t["on"] : "off" }}
+          {{ device.isTurnedOn ? t["on"] : t["off"] }}
         </div>
       </div>
       <div v-if="device.brightness" class="dataTile">
