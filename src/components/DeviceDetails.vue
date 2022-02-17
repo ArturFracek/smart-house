@@ -131,18 +131,10 @@ export default {
   display: inline-block;
   justify-content: end;
 }
-@media ( max-width: 450px) {
-.dataTile {
-  width: 44%;
-  height: 70%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0% 2%;
-  background-color: rgba(255, 255, 255, 0.993);
-  box-shadow: 5px 10px 30px rgba(179, 179, 179, 0.438);
-  border: 2px solid rgba(226, 226, 226, 0.685);
-}
+@media (max-width: 450px) {
+  .dataTile {
+    width: 44%;
+    height: 70%;
+  }
 }
 </style>

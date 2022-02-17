@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import Navigation from "@/components/Navigation"
+import Navigation from "@/components/Navigation";
 import DevicesTile from "@/components/DevicesTile";
 import Modal from "@/components/Modal.vue";
 import DeviceDetails from "@/components/DeviceDetails.vue";
@@ -54,25 +54,18 @@ export default {
     Modal,
     DeviceDetails,
     DevicesTile,
-    Navigation
+    Navigation,
   },
   watch: {
     "$route.params.deviceId": {
-      // co mam obserwować
-      // "" dlatego że klucz z kropkami jest błędnym zapisem - vue ogarnia wtedy jak damy ""
-      immediate: true, // true jezeli ma sie odpalic odrazu na mouted
+      immediate: true,
       async handler(deviceId) {
-        // handler to funcka która odpali się kiedy obserwowana wartosc sie zmieni ( wszystko z this., z $route, z vuexa) a lineId to Nowa wartosc po zmianie
-
         if (!deviceId) return;
         await this.loadDeviceById(deviceId);
         this.fetchDeviceInterval = setInterval(
           () => this.loadDeviceById(deviceId),
           3000
-        ); // ciało funkcji
-
-        console.log(deviceId);
-        console.log(this.device);
+        );
       },
     },
   },
@@ -133,56 +126,28 @@ export default {
   padding-right: 6px;
 }
 .header-icon {
- position: absolute;
- right: 3vw;
+  position: absolute;
+  right: 3vw;
 }
 
-@keyframes onTrigger {
-  0% {
-    color: rgb(0, 0, 0);
-    opacity: 0;
-    text-shadow: 9.6px 0px 12.8px turquoise, -9.6px 0px 12.8px turquoise,
-      0px 9.6px 12.8px turquoise, 0px -9.6px 12.8px turquoise;
-    filter: hue-rotate(0deg);
-  }
-  20% {
-    opacity: 0;
-    filter: hue-rotate(0deg);
-  }
-  70% {
-    opacity: 1;
-    text-shadow: 4.8px 0px 12.8px turquoise, -4.8px 0px 12.8px turquoise,
-      0px 4.8px 12.8px turquoise, 0px -4.8px 12.8px turquoise;
-    filter: hue-rotate(120deg);
-  }
-  80% {
-    opacity: 1;
-    text-shadow: 3.2px 0px 22.4px turquoise, -3.2px 0px 22.4px turquoise,
-      0px 3.2px 1.4em turquoise, 0px -3.2px 22.4px turquoise;
-    filter: hue-rotate(120deg);
-  }
-  100% {
-    opacity: 1;
-    text-shadow: 3.2px 0px 3.2px turquoise;
-    filter: hue-rotate(0deg);
-  }
-}
-
-@media ( max-width: 850px) {
+@media (max-width: 850px) {
   .mainView__devicesContainer {
     flex-flow: column;
     align-items: center;
     margin-top: 15%;
   }
   .tile__header--typeHeader {
-  font-size: 20px;
-  font-weight: 800;
-  padding-right: 6px;
+    font-size: 20px;
+    font-weight: 800;
+    padding-right: 6px;
+  }
+  .mainView__deviceType {
+    margin-top: 2%;
+  }
 }
-.mainView__deviceType{
-  margin-top: 2%;
+@media (max-width: 450px) {
+  .mainView__devicesContainer {
+    margin-top: 35%;
+  }
 }
-}
-
-
 </style>

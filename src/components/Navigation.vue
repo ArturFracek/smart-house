@@ -1,10 +1,6 @@
 <template>
   <div class="nav">
-    <button
-      v-if="$route.params"
-      class="mainView__smartHouse"
-      @click="goToHome"
-    >
+    <button v-if="$route.params" class="mainView__smartHouse" @click="goToHome">
       <i class="fa-solid fa-house-laptop"></i>
     </button>
   </div>
@@ -14,10 +10,10 @@
 export default {
   methods: {
     goToHome() {
-      if (this.$route.path === '/') return
-      this.$router.push('/')
-    }
-  }
+      if (this.$route.path === "/") return;
+      this.$router.push("/");
+    },
+  },
 };
 </script>
 

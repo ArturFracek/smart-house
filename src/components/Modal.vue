@@ -60,18 +60,17 @@ export default {
   border: none;
   font-size: 25px;
   transition: 0.2s;
-  font-family: 'Acme', sans-serif;
+  font-family: "Acme", sans-serif;
   cursor: pointer;
 }
 .modal__close:hover {
   font-size: 30px;
 }
 
-@media ( max-width: 850px) {
-.modal {
-  width: 85vw;
-  min-height: 40vh;
+@media (max-width: 850px) {
+  .modal {
+    width: 85vw;
+    min-height: 40vh;
+  }
 }
-}
-
 </style>

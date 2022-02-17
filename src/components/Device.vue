@@ -45,7 +45,7 @@ export default {
   font-weight: 500;
 }
 .device:hover {
-  transform: scale(1.05)
+  transform: scale(1.05);
 }
 .device__property {
   color: black;
@@ -72,11 +72,11 @@ export default {
   background-color: rgb(250, 16, 16);
 }
 
-@media ( max-width: 850px) {
+@media (max-width: 850px) {
   .device {
-   margin: 1vh;
-   font-size: 16px;
-  width: 60vw;
+    margin: 1vh;
+    font-size: 16px;
+    width: 60vw;
   }
 }
 </style>
