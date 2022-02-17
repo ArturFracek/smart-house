@@ -167,4 +167,22 @@ export default {
     filter: hue-rotate(0deg);
   }
 }
+
+@media ( max-width: 850px) {
+  .mainView__devicesContainer {
+    flex-flow: column;
+    align-items: center;
+    margin-top: 15%;
+  }
+  .tile__header--typeHeader {
+  font-size: 20px;
+  font-weight: 800;
+  padding-right: 6px;
+}
+.mainView__deviceType{
+  margin-top: 2%;
+}
+}
+
+
 </style>

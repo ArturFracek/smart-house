@@ -3,7 +3,7 @@
     <button
       v-if="$route.params"
       class="mainView__smartHouse"
-      @click="$router.push({ path: '/' })"
+      @click="goToHome"
     >
       <i class="fa-solid fa-house-laptop"></i>
     </button>
@@ -11,7 +11,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    goToHome() {
+      if (this.$route.path === '/') return
+      this.$router.push('/')
+    }
+  }
+};
 </script>
 
 <style>

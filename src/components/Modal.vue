@@ -66,4 +66,12 @@ export default {
 .modal__close:hover {
   font-size: 30px;
 }
+
+@media ( max-width: 850px) {
+.modal {
+  width: 85vw;
+  min-height: 40vh;
+}
+}
+
 </style>

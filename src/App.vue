@@ -4,22 +4,26 @@
   </div>
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Acme&family=Permanent+Marker&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Acme&family=Permanent+Marker&family=Ubuntu+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Permanent+Marker&family=Ubuntu+Mono&display=swap");
 * {
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: "Ubuntu Mono", monospace;
 }
 body {
   height: 100vh;
   margin: 0;
   overflow: hidden;
 }
+@media (max-width: 850px) {
+  body {
+    overflow: scroll;
+  }
+}
 body {
-  background-color: #eee
+  background-color: #eee;
 }
 
 #app {

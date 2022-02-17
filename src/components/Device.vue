@@ -6,7 +6,7 @@ import { fetchAllDevices } from '@/api';
       class="device__property device__property--connectionStateDot"
       :class="{
         connected: device.connectionState === 'connected',
-        poorConnection: device.connectionState === 'poor connection',
+        poorConnection: device.connectionState === 'poorConnection',
         disconnected: device.connectionState === 'disconnected',
       }"
     ></div>
@@ -41,7 +41,7 @@ export default {
   text-decoration: none;
   position: relative;
   transition: all 250ms ease;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
 }
 .device:hover {
@@ -70,5 +70,13 @@ export default {
 }
 .disconnected {
   background-color: rgb(250, 16, 16);
+}
+
+@media ( max-width: 850px) {
+  .device {
+   margin: 1vh;
+   font-size: 16px;
+  width: 60vw;
+  }
 }
 </style>

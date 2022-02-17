@@ -23,12 +23,12 @@
       <div v-if="device.connectionState" class="dataTile">
         <div class="device__dataType">Connection</div>
         <div class="device__data device__data--connectionState">
-          {{ device.connectionState }}
+          {{ t[device.connectionState] }}
           <div
-            class="device__property device__property--connectionStateDot"
+            class="device__data--connectionStateDot"
             :class="{
               connected: device.connectionState === 'connected',
-              poorConnection: device.connectionState === 'poor connection',
+              poorConnection: device.connectionState === 'poorConnection',
               disconnected: device.connectionState === 'disconnected',
             }"
           ></div>
@@ -37,7 +37,7 @@
       <div v-if="device.isTurnedOn" class="dataTile">
         <div class="device__dataType">State</div>
         <div class="device__data device__data--isTurnedOn">
-          {{ device.isTurnedOn ? "on" : "off" }}
+          {{ device.isTurnedOn ? t["on"] : "off" }}
         </div>
       </div>
       <div v-if="device.brightness" class="dataTile">
@@ -53,7 +53,7 @@
       <div v-if="device.powerConsuption" class="dataTile">
         <div class="device__dataType">Power consumption</div>
         <div class="device__data device__data--powerConsumption">
-          {{ device.powerConsuption }} W
+          {{ device.powerConsuption }} {{ t["wattUnit"] }}
         </div>
       </div>
       <div v-if="device.temperature" class="dataTile">
@@ -115,8 +115,34 @@ export default {
 }
 .device__dataType {
   color: rgba(93, 92, 92, 0.411);
+  font-size: 16px;
 }
 .device__data {
   margin-top: 1%;
+  font-size: 18px;
+}
+.device__data--connectionStateDot {
+  position: absolute;
+  margin-top: 0.4%;
+  margin-left: 0.5%;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  justify-content: end;
+}
+@media ( max-width: 450px) {
+.dataTile {
+  width: 44%;
+  height: 70%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0% 2%;
+  background-color: rgba(255, 255, 255, 0.993);
+  box-shadow: 5px 10px 30px rgba(179, 179, 179, 0.438);
+  border: 2px solid rgba(226, 226, 226, 0.685);
+}
 }
 </style>
